@@ -23,7 +23,18 @@ jobs:
         git clone https://github.com/sqlite/sqlite.git
         cd sqlite
         ./configure
-  
+
+    - name: Verify Compilation
+      run: |
+        cd sqlite
+        if [ -f ./sqlite3 ]; then
+          echo "SQLite compiled successfully."
+          ./sqlite3 --version
+        else
+          echo "SQLite compilation failed."
+          exit 1
+        fi
+    
     - name: Record compilation time
       run: |
         START_TIME=$(date +%s)
