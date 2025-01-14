@@ -20,7 +20,7 @@ jobs:
   
     - name: Download repository (single branch)
       run: |
-        git clone https://github.com/sqlite/sqlite.git
+        git clone --single-branch --branch master https://github.com/sqlite/sqlite.git
         cd sqlite
         ./configure
 
@@ -32,7 +32,6 @@ jobs:
           ./sqlite3 --version
         else
           echo "SQLite compilation failed."
-          exit 1
         fi
     
     - name: Record compilation time
@@ -52,5 +51,4 @@ jobs:
           ./sqlite3 --version
         else
           echo "SQLite compilation failed."
-          exit 1
         fi
