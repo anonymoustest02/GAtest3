@@ -28,7 +28,7 @@ jobs:
       run: |
         START_TIME=$(date +%s)
         cd sqlite
-        make > /dev/null 2>&1
+        make #> /dev/null 2>&1
         END_TIME=$(date +%s)
         COMPILATION_TIME=$((END_TIME - START_TIME))
         echo "Compilation time: $COMPILATION_TIME seconds"
