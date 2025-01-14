@@ -32,3 +32,14 @@ jobs:
         END_TIME=$(date +%s)
         COMPILATION_TIME=$((END_TIME - START_TIME))
         echo "Compilation time: $COMPILATION_TIME seconds"
+
+    - name: Verify Compilation
+      run: |
+        cd sqlite
+        if [ -f ./sqlite3 ]; then
+          echo "SQLite compiled successfully."
+          ./sqlite3 --version
+        else
+          echo "SQLite compilation failed."
+          exit 1
+        fi
